@@ -16,10 +16,12 @@ import moneycalculator.ui.MoneyDialog;
 
 public class SwingMoneyDialog extends JPanel implements MoneyDialog{
 
+    private final Currency[] currencies;
     private String amount;
     private Currency currency;
 
-    public SwingMoneyDialog() {
+    public SwingMoneyDialog(Currency[] currencies) {
+        this.currencies = currencies;
         this.add(amount());
         this.add(currency());
     }
@@ -38,19 +40,10 @@ public class SwingMoneyDialog extends JPanel implements MoneyDialog{
     }
 
     private Component currency() {
-        JComboBox combo = new JComboBox(currencies());
+        JComboBox combo = new JComboBox(currencies);
         combo.addItemListener(currencyCahged());
         currency = (Currency) combo.getSelectedItem();
         return combo;
-    }
-
-    private Currency[] currencies() {
-        return new Currency[] {
-            new Currency("USD", "Dolar USA", "$"),
-            new Currency("CAD", "Dolar Canada", "$"),
-            new Currency("GBP", "Libra esterlina", "£"),
-            new Currency("EUR", "Euro", "€")
-        };
     }
 
     private ItemListener currencyCahged() {

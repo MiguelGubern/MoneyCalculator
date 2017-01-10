@@ -2,14 +2,14 @@ package moneycalculator.model;
 
 public class Currency {
     
-    private final String symbol;
-    private final String name;
     private final String code;
+    private final String name;
+    private final String symbol;
 
-    public Currency( String symbol,String name, String code) {
-        this.symbol = symbol;
-        this.name = name;
+    public Currency(String code ,String name, String symbol) {
         this.code = code;
+        this.name = name;
+        this.symbol = symbol;
     }
 
     public String getName() {
